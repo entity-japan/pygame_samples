@@ -132,7 +132,6 @@
 ### 8、ドットマトリクスのドット移動を改造
 
 *↓変更前*
-https://github.com/user-attachments/assets/c5b61803-bbca-4914-9a4b-285c92069c7a
 
 *ドットマトリクスのドット移動を改造します*
 
@@ -167,4 +166,3 @@ https://github.com/user-attachments/assets/c5b61803-bbca-4914-9a4b-285c92069c7a
 >~~~
 
 *↓変更後*
-https://github.com/user-attachments/assets/f4a1feb3-35ee-41b6-b670-c0983b0e0a62
