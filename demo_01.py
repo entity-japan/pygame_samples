@@ -26,8 +26,8 @@ while running:
 
     color_on = (0, 255, 255)
     color_off = (255, 255, 255)
-    for x0 in range(8):
-        for y0 in range(10):
+    for x0 in range(5):
+        for y0 in range(7):
             # pygame.draw.circle(screen, color_off, (24 + x0 * 16, 24 + y0 * 16), 8)
             pygame.draw.rect(screen, color_off, Rect(24 + x0 * 16, 24 + y0 * 16, 12, 12))
 
@@ -36,7 +36,10 @@ while running:
     x1 += 1
     if x1 > 4:
         x1 = 0
-
+        y1 += 1
+    if y1 > 6:
+        y1 = 0
+   
     pygame.display.flip()  # update
     clock.tick(5)  # FPS, Frame Per Second
 # infinite loop bottom ----
