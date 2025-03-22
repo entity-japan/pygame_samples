@@ -4,8 +4,8 @@ from pygame.locals import Rect
 pygame.init()
 
 clock = pygame.time.Clock()
-screen = pygame.display.set_mode([640, 480])
-pygame.display.set_caption("pygame demo - window title here")
+screen = pygame.display.set_mode([800, 640])
+pygame.display.set_caption("pygame demo - window title here やで～")
 
 running = True
 x1, y1 = 0, 2
@@ -17,17 +17,17 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill((238, 238, 170))  # back ground color
+    screen.fill((220, 190, 75))  # back ground color
 
-    pygame.draw.circle(screen, (176, 176, 222), (320, 240), 120)
-    pygame.draw.circle(screen, (222, 176, 222), (120, 120), 20)
-    pygame.draw.circle(screen, (222, 176, 222), (120, 120), 20)
-    pygame.draw.rect(screen, (120, 120, 120), Rect(120, 120, 200, 120))
+    pygame.draw.circle(screen, (0, 255, 255), (500, 400), 200)
+    pygame.draw.circle(screen, (192, 192, 192), (500, 400), 125)
+    pygame.draw.circle(screen, (0, 255, 0), (500, 400), 50)
+    pygame.draw.rect(screen, (255, 255, 0), Rect(150, 150, 20, 300))
 
-    color_on = (240, 120, 120)
-    color_off = (120, 120, 120)
-    for x0 in range(5):
-        for y0 in range(7):
+    color_on = (0, 255, 255)
+    color_off = (255, 255, 255)
+    for x0 in range(8):
+        for y0 in range(10):
             # pygame.draw.circle(screen, color_off, (24 + x0 * 16, 24 + y0 * 16), 8)
             pygame.draw.rect(screen, color_off, Rect(24 + x0 * 16, 24 + y0 * 16, 12, 12))
 
