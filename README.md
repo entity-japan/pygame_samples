@@ -265,3 +265,86 @@
 
 *変更後↓*
 >https://github.com/user-attachments/assets/35445338-9389-4ffd-8e33-684063f0bb5c
+
+## LCDフォントで時刻、日付を表示する
+
+*変更前↓
+>https://github.com/user-attachments/assets/e75a65ac-e356-4e49-917c-c742e4a8f280
+
+### 1、フォントの追加
+
+*新たに「：」と「ー」のフォントを追加します*
+
+*lcd_font_pg.pyに書き込む↓*
+>~~~
+>LCD_10 = (0, 0, 0, 0, 0,
+>          0, 1, 1, 0, 0,
+>          0, 1, 1, 0, 0,
+>          0, 0, 0, 0, 0,
+>          0, 1, 1, 0, 0,
+>          0, 1, 1, 0, 0,
+>          0, 0, 0, 0, 0,)
+>
+>LCD_11 = (0, 0, 0, 0, 0,
+>          0, 0, 0, 0, 0,
+>          0, 0, 0, 0, 0,
+>          1, 1, 1, 1, 1,
+>          0, 0, 0, 0, 0,
+>          0, 0, 0, 0, 0,
+>          0, 0, 0, 0, 0,)
+>
+>LCD_font_styles = (LCD_0, LCD_1, LCD_2, LCD_3, LCD_4, LCD_5, LCD_6, LCD_7, LCD_8, LCD_9, LCD_10, LCD_11)
+>~~~
+
+### 2、LCDフォント表示の要素を抜き出し、demo_03.pyに取り込む
+
+*demo_lcd_font.pyからLCDフォント表示の要素を抜き出し、demo_02.pyを複製して作ったdemo_03.pyに取り込みます*
+
+>~~~
+>font1 = pygame.freetype.Font("fonts/natumemozi.ttf", 48)>
+>
+>lcd1 = LCD_font(screen)
+>lcd1.init_col(BLOCK_SIZE=9, BLOCK_INTV=9, COLOR_ON=(120, 200, 250), COLOR_OFF=GRAY)
+>lcd1.init_row(X_ORG=2, Y_ORG=2, COL_INTV=6)
+>
+>
+>def LCD_display(x, y):
+>     lcd1.update_col(col=0)>
+>
+>lcd2 = LCD_font(screen)
+>lcd2.init_col(BLOCK_SIZE=7, BLOCK_INTV=8, COLOR_ON=RED, COLOR_OFF=GRAY)
+>lcd2.init_row(X_ORG=2, Y_ORG=17, COL_INTV=6)
+>
+>def LCD_display(x, y):
+>    lcd2.update_col(col=0)
+>~~~
+
+### 3、LCDフォントで時刻、日付を表示する
+
+*LCDフォントで時刻と日付を表示します*
+
+*lcd1が時刻、lcd2が日付です↓*
+>~~~
+>lcd1.update_col(col=0, code=dt_now.hour // 10)
+>lcd1.update_col(col=1, code=dt_now.hour % 10)
+>lcd1.update_col(col=2, code=10)
+>lcd1.update_col(col=3, code=dt_now.minute // 10)
+>lcd1.update_col(col=4, code=dt_now.minute % 10)
+>lcd1.update_col(col=5, code=10)
+>lcd1.update_col(col=6, code=dt_now.second // 10)
+>lcd1.update_col(col=7, code=dt_now.second % 10)
+>
+>lcd2.update_col(col=0, code=int(str(dt_now.year)[0]))
+>lcd2.update_col(col=1, code=int(str(dt_now.year)[1]))
+>lcd2.update_col(col=2, code=int(str(dt_now.year)[2]))
+>lcd2.update_col(col=3, code=int(str(dt_now.year)[3]))
+>lcd2.update_col(col=4, code=11)
+>lcd2.update_col(col=5, code=dt_now.month // 10)
+>lcd2.update_col(col=6, code=dt_now.month % 10)
+>lcd2.update_col(col=7, code=11)
+>lcd2.update_col(col=8, code=dt_now.day // 10)
+>lcd2.update_col(col=9, code=dt_now.day % 10)
+>~~~
+
+*変更後↓*
+>https://github.com/user-attachments/assets/26948674-a1eb-490a-ada3-7ec6d9601c1f
